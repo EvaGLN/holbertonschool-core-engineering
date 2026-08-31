@@ -7,4 +7,4 @@ for letter in range(97, 123):
     if character != "e" and character != "q":
         alphabet += character
 
-print(alphabet)
+print(f"{alphabet}")
