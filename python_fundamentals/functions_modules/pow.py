@@ -3,6 +3,11 @@
 def pow(a, b):
     result = 1
 
-    for i in range(b):
-        result *= a
-    return result
+    if b < 0:
+        for i in range(-b):
+            result *= a
+        return 1 / result
+    else:
+        for i in range(b):
+            result *= a
+        return result
