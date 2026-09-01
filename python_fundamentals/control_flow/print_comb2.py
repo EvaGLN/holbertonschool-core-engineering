@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-for i in range (100):
-    print("{:02d}".format(i))
+for i in range(100):
+    print("{:02d}".format(i), end="")
     if i < 99:
-        print(", ")
+        print(", ", end="")
+    else
+        print()
