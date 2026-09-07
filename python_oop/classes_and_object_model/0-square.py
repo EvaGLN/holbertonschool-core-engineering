@@ -2,4 +2,4 @@
 """Module for a square"""
 
 class Square:
-    pass
+    """Class for a square, empty at the moment"""
