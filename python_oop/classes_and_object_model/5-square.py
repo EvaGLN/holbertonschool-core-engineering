@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Module for the area of a square"""
+"""Module to implement controlled access to attributes"""
 
 
 class Square:
-    """Class to return the area of the square"""
+    """Class of the square"""
     def __init__(self, size=0):
         self.size = size
 
