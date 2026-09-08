@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module for the area of a rectangle"""
+"""Module to reinforce object modeling with a second class"""
 
 
 class Rectangle:
