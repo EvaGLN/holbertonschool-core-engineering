@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Module for a square size validation"""
+"""Module to ensure that object state is valid."""
 
 
 class Square:
-    """Class for a square with a private instance attribute size"""
+    """Class for a square"""
     def __init__(self, size=0):
         if not isinstance(size, int):
             raise TypeError("size must be an integer")

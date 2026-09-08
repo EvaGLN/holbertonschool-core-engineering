@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module for a square"""
+"""Module to create your first Python class"""
 
 
 class Square:

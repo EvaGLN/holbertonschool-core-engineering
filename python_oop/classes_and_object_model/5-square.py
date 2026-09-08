@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Module to implement controlled access to attributes"""
+"""Module to use object state to generate output"""
 
 
 class Square:
-    """Class of the square"""
+    """Class for a square"""
     def __init__(self, size=0):
         self.size = size
 

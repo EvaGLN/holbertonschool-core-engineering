@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Module to print a square"""
+"""Module to control how objects are represented as strings"""
 
 
 class Square:
-    """Class to print a square"""
+    """Class for a square"""
     def __init__(self, size=0, position=(0, 0)):
         self.size = size
         self.position = position
