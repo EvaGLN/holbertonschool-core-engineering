@@ -3,7 +3,7 @@
 
 
 class Rectangle:
-    """Class to return the area of the rectangle"""
+    """Class for a square, empty at the moment"""
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
