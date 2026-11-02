@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Server"""
 import asyncio
 import websockets
 
