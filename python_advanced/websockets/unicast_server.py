@@ -6,6 +6,7 @@ import websockets
 
 connected_clients = set()
 
+
 async def onboard(websocket):
     """Handle and respond to only one client"""
     connected_clients.add(websocket)
