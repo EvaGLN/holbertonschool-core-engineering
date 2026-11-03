@@ -6,6 +6,17 @@ const socket = new WebSocket("ws://127.0.0.1:8000/ws");
 const username = "Guest-" + Math.floor(Math.random() * 10000);
 const myName = document.getElementById("my-name");
 myName.textContent = "Vous êtes " + username;
+const inputWrap = document.getElementById("input-wrap");
+const emojiButton = document.getElementById("emoji-button");
+const emojiPanel = document.getElementById("emoji-panel");
+const emojis = [
+    "😀", "😂", "😍", "🥰", "😎", "🤔", "😢", "😡",
+    "👍", "👎", "👏", "🙏", "💪", "🎉", "❤️", "🔥",
+    "🦄", "🌈", "✨", "⭐", "🌸", "🍕", "☕", "🎶"
+];
+const sparkleColors = ["#ffd54a", "#ff8fcf", "#b79cff", "#7fe3ff", "#ffffff"];
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let lastSparkle = 0;
 
 socket.onopen = () => {
     socket.send(JSON.stringify({ type: "join", username: username }));
@@ -63,3 +74,50 @@ socket.onmessage = (event) => {
     chathistory.appendChild(article);
     chathistory.scrollTop = chathistory.scrollHeight;
 };
+
+emojis.forEach((emoji) => {
+    const choice = document.createElement("button");
+    choice.type = "button";
+    choice.textContent = emoji;
+    choice.addEventListener("click", () => {
+        message.value += emoji;
+        message.focus();
+    });
+    emojiPanel.appendChild(choice);
+});
+
+emojiButton.addEventListener("click", () => {
+    emojiPanel.hidden = !emojiPanel.hidden;
+});
+
+document.addEventListener("click", (event) => {
+    if (!inputWrap.contains(event.target)) {
+        emojiPanel.hidden = true;
+    }
+});
+
+document.addEventListener("mousemove", (event) => {
+    if (reduceMotion) {
+        return;
+    }
+    const now = Date.now();
+    if (now - lastSparkle < 30) {
+        return;
+    }
+    lastSparkle = now;
+
+    const sparkle = document.createElement("span");
+    sparkle.className = "sparkle";
+    sparkle.textContent = "✦";
+    sparkle.style.left = (event.clientX + 7) + "px";
+    sparkle.style.top = (event.clientY + 12) + "px";
+    sparkle.style.fontSize = (8 + Math.random() * 12) + "px";
+    sparkle.style.color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
+    sparkle.style.setProperty("--dx", (Math.random() * 30 - 15) + "px");
+    sparkle.style.setProperty("--dy", (Math.random() * 30 + 5) + "px");
+    document.body.appendChild(sparkle);
+
+    sparkle.addEventListener("animationend", () => {
+        sparkle.remove();
+    });
+});
